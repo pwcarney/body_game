@@ -25,11 +25,14 @@ public class VeinDrawable : MonoBehaviour
         vein_prefab = Resources.Load("Vein") as GameObject;
     }
 
-    public void Strech()
+    public void Strech(Vector3 final_position = new Vector3())
     {
         Vector3 initial_position = transform.position;
-        Vector3 final_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        final_position.z = 0;
+        if (final_position == Vector3.zero)
+        {
+            final_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            final_position.z = 0;
+        }
 
         Vector3 centerPos = (initial_position + final_position) / 2f;
         new_vein.transform.position = centerPos;
@@ -84,8 +87,9 @@ public class VeinDrawable : MonoBehaviour
                     continue;
                 }
 
-                if (vein_drawable.MouseInsideMe && !connections.Contains(vein_drawable.gameObject))
+                if (IsVeinInsideBody() && vein_drawable.MouseInsideMe && !connections.Contains(vein_drawable.gameObject))
                 {
+                    Strech(vein_drawable.transform.position);
                     connections.Add(vein_drawable.gameObject);
                     return;
                 }
@@ -93,5 +97,22 @@ public class VeinDrawable : MonoBehaviour
 
             Destroy(new_vein);
         }
+    }
+
+    bool IsVeinInsideBody()
+    {
+        Vector3 initial_position = transform.position;
+        Vector3 final_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        for (float i = 0; i <= 1; i += 0.01f)
+        {
+            Vector3 intermediate_point = Vector3.Lerp(initial_position, final_position, i);
+            if (Physics2D.OverlapPoint(intermediate_point) == null)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
