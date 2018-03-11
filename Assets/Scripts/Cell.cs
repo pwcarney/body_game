@@ -11,7 +11,7 @@ public class Cell : MonoBehaviour
     float health_decay_time = 0.5f;
     float last_decay_time = 0f;
 
-	void FixedUpdate ()
+	void FixedUpdate()
     {
         if (Time.timeSinceLevelLoad > last_decay_time + health_decay_time)
         {

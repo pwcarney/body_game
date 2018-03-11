@@ -10,7 +10,7 @@ public class Heartbeat : MonoBehaviour
     float grow_speed = 0.005f;
     bool growing = true;
 
-    void FixedUpdate ()
+    void FixedUpdate()
     {
         if (growing && scale < max_scale)
         {

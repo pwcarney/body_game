@@ -6,7 +6,7 @@ public class CameraControl : MonoBehaviour
 {
     float mouse_speed = 0.003f;
 
-	void Update ()
+	void Update()
     {
         // Move move
         if (Input.GetMouseButton(1) && (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0))

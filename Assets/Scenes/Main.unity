@@ -209,6 +209,26 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9e92e909cecbe241aa62aa3da91e9fc, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &123703941 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1356314420651622, guid: 64283ab367fb48c40a346a6cb05edc57,
+    type: 2}
+  m_PrefabInternal: {fileID: 786590737}
+--- !u!58 &123703942
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 123703941}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16306168, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.093062
 --- !u!1 &682342688
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,6 +326,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4203601491646912, guid: 64283ab367fb48c40a346a6cb05edc57, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.54
@@ -338,7 +363,58 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[6].x
+      value: -0.73306084
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[6].y
+      value: -1.2267311
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[7].x
+      value: -2.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[7].y
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[8].x
+      value: -2.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[8].y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[9].x
+      value: -1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57,
+        type: 2}
+      propertyPath: m_Points.Array.data[9].y
+      value: 1.46
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 68668621965730614, guid: 64283ab367fb48c40a346a6cb05edc57, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 64283ab367fb48c40a346a6cb05edc57, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &880520480
@@ -379,6 +455,11 @@ Prefab:
     - target: {fileID: 4374475318089506, guid: 03c693eb45f8fc94b8e1e95965c357aa, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114986636198265772, guid: 03c693eb45f8fc94b8e1e95965c357aa,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03c693eb45f8fc94b8e1e95965c357aa, type: 2}
