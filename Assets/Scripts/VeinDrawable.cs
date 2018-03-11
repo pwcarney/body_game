@@ -8,6 +8,17 @@ public class VeinDrawable : MonoBehaviour
     GameObject vein_prefab;
 
     bool dragging_me;
+    bool mouse_inside_me;
+
+    List<GameObject> connections = new List<GameObject>();
+
+    public bool MouseInsideMe
+    {
+        get
+        {
+            return mouse_inside_me;
+        }
+    }
 
     void Start()
     {
@@ -49,11 +60,37 @@ public class VeinDrawable : MonoBehaviour
         }
     }
 
+    void OnMouseEnter()
+    {
+        mouse_inside_me = true;
+    }
+
+    void OnMouseExit()
+    {
+        mouse_inside_me = false;
+    }
+
     void OnMouseUp()
     {
         if (dragging_me)
         {
             dragging_me = false;
+
+            VeinDrawable[] vein_drawables = FindObjectsOfType<VeinDrawable>();
+            foreach (VeinDrawable vein_drawable in vein_drawables)
+            {
+                if (vein_drawable == this)
+                {
+                    continue;
+                }
+
+                if (vein_drawable.MouseInsideMe && !connections.Contains(vein_drawable.gameObject))
+                {
+                    connections.Add(vein_drawable.gameObject);
+                    return;
+                }
+            }
+
             Destroy(new_vein);
         }
     }
