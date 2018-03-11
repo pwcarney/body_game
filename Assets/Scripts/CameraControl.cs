@@ -11,7 +11,6 @@ public class CameraControl : MonoBehaviour
         // Move move
         if (Input.GetMouseButton(1) && (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0))
         {
-            Debug.Log(Input.GetAxis("Vertical"));
             Vector3 current_camera_pos = Camera.main.transform.position;
             current_camera_pos.x = Mathf.Clamp(current_camera_pos.x - Input.GetAxis("Horizontal") * mouse_speed * Camera.main.orthographicSize, -7.25f, 7.25f);
             current_camera_pos.y = Mathf.Clamp(current_camera_pos.y - Input.GetAxis("Vertical") * mouse_speed * Camera.main.orthographicSize, -8.25f, 4.25f);
