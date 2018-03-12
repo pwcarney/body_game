@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BloodNetwork : MonoBehaviour
 {
-    List<GameObject> connections = new List<GameObject>();
+    public List<GameObject> connections = new List<GameObject>();
 
     void Start()
     {

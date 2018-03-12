@@ -10,21 +10,12 @@ public class Cell : MonoBehaviour
     float health = 1;
     float health_decay_time = 0.25f;
     float last_decay_time = 0f;
-    float need_dist_multiplier;
-
-    float receive_cooldown = 1;
-    float last_receive = 0;
-
-    void Start()
-    {
-        need_dist_multiplier = Vector3.Distance(transform.position, FindObjectOfType<Oxygenator>().transform.position);
-    }
 
 	void FixedUpdate()
     {
         if (Time.timeSinceLevelLoad > last_decay_time + health_decay_time)
         {
-            health = Mathf.Clamp01(health - 0.0001f);
+            health = Mathf.Clamp01(health - 0.005f);
             last_decay_time = Time.timeSinceLevelLoad;
         }
 
@@ -42,8 +33,6 @@ public class Cell : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Blood>().Oxygenation > 0)
             {
-                last_receive = Time.timeSinceLevelLoad;
-
                 collision.gameObject.GetComponent<Blood>().Oxygenation--;
 
                 ReceiveBlood();

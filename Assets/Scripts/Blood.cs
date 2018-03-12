@@ -8,6 +8,7 @@ public class Blood : MonoBehaviour
     int max_oxygenation = 3;
 
     GameObject current_location;
+    GameObject next_destination;
     GameObject current_destination;
 
     float blood_speed = 2f;
@@ -22,32 +23,39 @@ public class Blood : MonoBehaviour
 
     public void FindNextLocation(GameObject other)
     {
-        current_location = other;
-        FindTarget();
+        FindTargetFrom(other);
+
+        if (current_destination == null)
+        {
+            current_destination = next_destination;
+        }
     }
 
-    void FindTarget()
+    void FindTargetFrom(GameObject other)
     {
         if (oxygenation == 0)
         {
-            foreach (GameObject connection in current_location.GetComponent<BloodNetwork>().Connections)
+            foreach (GameObject connection in other.GetComponent<BloodNetwork>().Connections)
             {
                 if (connection.GetComponent<Oxygenator>() != null)
                 {
-                    current_destination = connection;
+                    next_destination = connection;
                     return;
                 }
             }
         }
-        else
-        {
-            current_destination =
-                current_location.GetComponent<BloodNetwork>().Connections[Random.Range(1, current_location.GetComponent<BloodNetwork>().Connections.Count)];
-        }
+
+        next_destination =
+            other.GetComponent<BloodNetwork>().Connections[Random.Range(1, other.GetComponent<BloodNetwork>().Connections.Count)];
     }
 
     void FixedUpdate()
     {
+        if (Vector3.Distance(transform.position, current_destination.transform.position) < 0.1f)
+        {
+            current_destination = next_destination;
+        }
+
         transform.position = Vector3.MoveTowards(transform.position, current_destination.transform.position, blood_speed * Time.deltaTime);
     }
 
