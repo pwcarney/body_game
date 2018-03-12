@@ -90,7 +90,9 @@ public class VeinDrawable : MonoBehaviour
                 if (IsVeinInsideBody() && vein_drawable.MouseInsideMe && !connections.Contains(vein_drawable.gameObject))
                 {
                     Strech(vein_drawable.transform.position);
-                    connections.Add(vein_drawable.gameObject);
+
+                    vein_drawable.gameObject.GetComponent<BloodNetwork>().AddConnection(this.gameObject);
+                    gameObject.GetComponent<BloodNetwork>().AddConnection(vein_drawable.gameObject);
                     return;
                 }
             }

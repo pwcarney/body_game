@@ -21,4 +21,21 @@ public class Cell : MonoBehaviour
 
         GetComponent<SpriteRenderer>().color = Color.Lerp(healthy_color, unhealthy_color, 1 - health);
     }
+
+    public void ReceiveBlood()
+    {
+        health += 0.05f;
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Blood>() != null)
+        {
+            if (collision.gameObject.GetComponent<Blood>().Oxygenated == true)
+            {
+                collision.gameObject.GetComponent<Blood>().Oxygenated = false;
+            }
+            ReceiveBlood();
+        }
+    }
 }
