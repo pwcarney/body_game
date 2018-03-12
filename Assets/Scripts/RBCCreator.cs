@@ -8,7 +8,7 @@ public class RBCCreator : MonoBehaviour
 
     float creation_cooldown = 1f;
     float last_creation = 0f;
-    int pool = 5;
+    int pool = 3;
 
     void Start()
     {

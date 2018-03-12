@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class Blood : MonoBehaviour
 {
-    bool oxygenated;
+    public int oxygenation = 0;
+    int max_oxygenation = 3;
 
     GameObject current_location;
     GameObject current_destination;
     float blood_speed = 2f;
 
-    public Sprite empty_sprite;
-    public Sprite full_sprite;
+    public Color empty_color;
+    public Color full_color;
 
     void Start()
     {
-        Oxygenated = false;
+        Oxygenation = 0;
     }
 
     public void SetLocation(GameObject other)
@@ -28,12 +29,12 @@ public class Blood : MonoBehaviour
     {
         foreach (GameObject connected in current_location.GetComponent<BloodNetwork>().Connections)
         {
-            if (oxygenated && connected.GetComponent<Cell>() != null)
+            if (oxygenation < max_oxygenation && connected.GetComponent<Oxygenator>() != null)
             {
                 current_destination = connected;
                 break;
             }
-            else if (!oxygenated && connected.GetComponent<Oxygenator>() != null)
+            else if (oxygenation > 0 && connected.GetComponent<Cell>() != null)
             {
                 current_destination = connected;
                 break;
@@ -46,26 +47,31 @@ public class Blood : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, current_destination.transform.position, blood_speed * Time.deltaTime);
     }
 
-    public bool Oxygenated
+    public int Oxygenation
     {
         get
         {
-            return oxygenated;
+            return oxygenation;
         }
 
         set
         {
-            if (value == true)
-            {
-                GetComponent<SpriteRenderer>().sprite = full_sprite;
-            }
-            else if (value == false)
-            {
-                GetComponent<SpriteRenderer>().sprite = empty_sprite;
-            }
-            oxygenated = value;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(empty_color, full_color, oxygenation / (float)max_oxygenation);
 
-            FindTarget();
+            oxygenation = value;
+
+            if (oxygenation == 0 || oxygenation == max_oxygenation)
+            {
+                FindTarget();
+            }
+        }
+    }
+
+    public int MaxOxygenation
+    {
+        get
+        {
+            return max_oxygenation;
         }
     }
 }
