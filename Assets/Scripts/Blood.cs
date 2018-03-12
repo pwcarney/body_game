@@ -9,6 +9,7 @@ public class Blood : MonoBehaviour
 
     GameObject current_location;
     GameObject current_destination;
+
     float blood_speed = 2f;
 
     public Color empty_color;
@@ -19,7 +20,7 @@ public class Blood : MonoBehaviour
         Oxygenation = 0;
     }
 
-    public void SetLocation(GameObject other)
+    public void FindNextLocation(GameObject other)
     {
         current_location = other;
         FindTarget();
@@ -27,18 +28,21 @@ public class Blood : MonoBehaviour
 
     void FindTarget()
     {
-        foreach (GameObject connected in current_location.GetComponent<BloodNetwork>().Connections)
+        if (oxygenation == 0)
         {
-            if (oxygenation < max_oxygenation && connected.GetComponent<Oxygenator>() != null)
+            foreach (GameObject connection in current_location.GetComponent<BloodNetwork>().Connections)
             {
-                current_destination = connected;
-                break;
+                if (connection.GetComponent<Oxygenator>() != null)
+                {
+                    current_destination = connection;
+                    return;
+                }
             }
-            else if (oxygenation > 0 && connected.GetComponent<Cell>() != null)
-            {
-                current_destination = connected;
-                break;
-            }
+        }
+        else
+        {
+            current_destination =
+                current_location.GetComponent<BloodNetwork>().Connections[Random.Range(1, current_location.GetComponent<BloodNetwork>().Connections.Count)];
         }
     }
 
@@ -56,14 +60,9 @@ public class Blood : MonoBehaviour
 
         set
         {
-            GetComponent<SpriteRenderer>().color = Color.Lerp(empty_color, full_color, oxygenation / (float)max_oxygenation);
-
             oxygenation = value;
 
-            if (oxygenation == 0 || oxygenation == max_oxygenation)
-            {
-                FindTarget();
-            }
+            GetComponent<SpriteRenderer>().color = Color.Lerp(empty_color, full_color, oxygenation / (float)max_oxygenation);
         }
     }
 

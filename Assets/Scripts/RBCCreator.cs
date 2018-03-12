@@ -8,7 +8,7 @@ public class RBCCreator : MonoBehaviour
 
     float creation_cooldown = 1f;
     float last_creation = 0f;
-    int pool = 3;
+    int pool = 1;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class RBCCreator : MonoBehaviour
             last_creation = Time.timeSinceLevelLoad;
 
             GameObject new_rbc = Instantiate(rbc_prefab, transform.position, Quaternion.identity);
-            new_rbc.GetComponent<Blood>().SetLocation(gameObject);
+            new_rbc.GetComponent<Blood>().FindNextLocation(gameObject);
         }
 	}
 }

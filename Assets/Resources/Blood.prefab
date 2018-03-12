@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c6823aeb5ac56499ff0e7c13f37247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygenation: 0
   empty_color: {r: 0.7607844, g: 0.76470596, b: 0.7803922, a: 1}
   full_color: {r: 1, g: 0.007843138, b: 0.3019608, a: 1}
 --- !u!212 &212219019620014992
