@@ -24,7 +24,7 @@ public class Cell : MonoBehaviour
 
     public void ReceiveBlood()
     {
-        health += 0.05f;
+        health = 1;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
