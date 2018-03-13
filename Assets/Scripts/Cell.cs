@@ -13,10 +13,15 @@ public class Cell : MonoBehaviour
 
 	void FixedUpdate()
     {
-        if (Time.timeSinceLevelLoad > last_decay_time + health_decay_time)
+        if (Time.timeSinceLevelLoad > last_decay_time + health_decay_time && !GameOver.IsGameOver)
         {
             health = Mathf.Clamp01(health - 0.005f);
             last_decay_time = Time.timeSinceLevelLoad;
+
+            if (health == 0)
+            {
+                GameOver.EndGame(gameObject);
+            }
         }
 
         GetComponent<SpriteRenderer>().color = Color.Lerp(healthy_color, unhealthy_color, 1 - health);

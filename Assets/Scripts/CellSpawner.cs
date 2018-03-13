@@ -16,7 +16,7 @@ public class CellSpawner : MonoBehaviour
 	
 	void Update ()
     {
-		if (Time.timeSinceLevelLoad > last_spawn + spawn_rate)
+		if (Time.timeSinceLevelLoad > last_spawn + spawn_rate && !GameOver.IsGameOver)
         {
             SpawnNewCell();
             last_spawn = Time.timeSinceLevelLoad;
