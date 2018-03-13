@@ -59,6 +59,19 @@ public class Blood : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, current_destination.transform.position, blood_speed * Time.deltaTime);
     }
 
+    public bool CanOxygenate(GameObject requester)
+    {
+        if (requester == current_destination)
+        {
+            Oxygenation--;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public int Oxygenation
     {
         get

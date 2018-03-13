@@ -31,14 +31,11 @@ public class Cell : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Blood>() != null)
         {
-            if (collision.gameObject.GetComponent<Blood>().Oxygenation > 0)
+            if (collision.gameObject.GetComponent<Blood>().Oxygenation > 0 && collision.gameObject.GetComponent<Blood>().CanOxygenate(gameObject))
             {
-                collision.gameObject.GetComponent<Blood>().Oxygenation--;
-
                 ReceiveBlood();
+                collision.gameObject.GetComponent<Blood>().FindNextLocation(gameObject);
             }
-
-            collision.gameObject.GetComponent<Blood>().FindNextLocation(gameObject);
         }
     }
 }
