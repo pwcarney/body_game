@@ -10,8 +10,17 @@ public class Heartbeat : MonoBehaviour
     float grow_speed = 0.005f;
     bool growing = true;
 
+    float color_change = 0;
+
     void FixedUpdate()
     {
+        if (GameOver.IsGameOver)
+        {
+            GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.black, color_change);
+            color_change += 0.05f;
+            return;
+        }
+
         if (growing && scale < max_scale)
         {
             scale += grow_speed;

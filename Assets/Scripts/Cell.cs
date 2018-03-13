@@ -11,7 +11,12 @@ public class Cell : MonoBehaviour
     float health_decay_time = 0.25f;
     float last_decay_time = 0f;
 
-	void FixedUpdate()
+    void Start()
+    {
+        ChangeColor();
+    }
+
+    void FixedUpdate()
     {
         if (Time.timeSinceLevelLoad > last_decay_time + health_decay_time && !GameOver.IsGameOver)
         {
@@ -24,7 +29,12 @@ public class Cell : MonoBehaviour
             }
         }
 
-        GetComponent<SpriteRenderer>().color = Color.Lerp(healthy_color, unhealthy_color, 1 - health);
+        ChangeColor();
+    }
+
+    void ChangeColor()
+    {
+        GetComponent<SpriteRenderer>().color = Color.Lerp(healthy_color, unhealthy_color, 1 - health); 
     }
 
     public void ReceiveBlood()
