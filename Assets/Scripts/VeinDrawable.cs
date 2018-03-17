@@ -60,7 +60,7 @@ public class VeinDrawable : MonoBehaviour
     }
 
     void OnMouseDrag()
-    {
+    { 
         if (!dragging_me)
         {
             dragging_me = true;
@@ -80,30 +80,22 @@ public class VeinDrawable : MonoBehaviour
 
     void OnMouseUp()
     {
-        if (dragging_me)
+        dragging_me = false;
+
+        VeinDrawable[] vein_drawables = FindObjectsOfType<VeinDrawable>();
+        foreach (VeinDrawable vein_drawable in vein_drawables)
         {
-            dragging_me = false;
-
-            VeinDrawable[] vein_drawables = FindObjectsOfType<VeinDrawable>();
-            foreach (VeinDrawable vein_drawable in vein_drawables)
+            if (IsVeinInsideBody() && vein_drawable.MouseInsideMe && !connections.Contains(vein_drawable.gameObject))
             {
-                if (vein_drawable == this)
-                {
-                    continue;
-                }
+                Strech(vein_drawable.transform.position);
 
-                if (IsVeinInsideBody() && vein_drawable.MouseInsideMe && !connections.Contains(vein_drawable.gameObject))
-                {
-                    Strech(vein_drawable.transform.position);
-
-                    vein_drawable.gameObject.GetComponent<BloodNetwork>().AddConnection(this.gameObject);
-                    gameObject.GetComponent<BloodNetwork>().AddConnection(vein_drawable.gameObject);
-                    return;
-                }
+                vein_drawable.gameObject.GetComponent<BloodNetwork>().AddConnection(this.gameObject);
+                gameObject.GetComponent<BloodNetwork>().AddConnection(vein_drawable.gameObject);
+                return;
             }
-
-            Destroy(new_vein);
         }
+
+        Destroy(new_vein);
     }
 
     bool IsVeinInsideBody()
@@ -116,7 +108,7 @@ public class VeinDrawable : MonoBehaviour
             Vector3 intermediate_point = Vector3.Lerp(initial_position, final_position, i);
             if (Physics2D.OverlapPoint(intermediate_point) == null)
             {
-                Debug.Log("Drawn vein is outside body");
+                Debug.Log("Drawn vein outside body");
                 return false;
             }
         }

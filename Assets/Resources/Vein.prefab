@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4559780857497114}
   - component: {fileID: 212993452008703010}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Vein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1369330643
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 267a6e84e64d01f4fbebc88738c12085, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
