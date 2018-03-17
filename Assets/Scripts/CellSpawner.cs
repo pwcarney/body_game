@@ -35,8 +35,9 @@ public class CellSpawner : MonoBehaviour
 
     void SpawnNewCell()
     {
-        Vector3 spawn_position;
-        while (true)
+        Vector3 spawn_position = new Vector3();
+        int spawn_tries = 0;
+        while (spawn_tries < 5)
         {
             GameObject body_part = transform.parent.GetChild(Random.Range(1, 8)).gameObject;
 
@@ -49,8 +50,12 @@ public class CellSpawner : MonoBehaviour
             Collider2D[] test_location_colliders = Physics2D.OverlapCircleAll(spawn_position, 0.1f);
             if (test_location_colliders.Length == 1)
             {
-                Debug.LogWarning("Cell location blocked, trying again");
                 break;
+            }
+            else
+            {
+                spawn_tries++;
+                Debug.LogWarning("Cell location blocked, trying again");
             }
         }
 

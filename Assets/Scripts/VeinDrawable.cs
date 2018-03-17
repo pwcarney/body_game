@@ -48,6 +48,11 @@ public class VeinDrawable : MonoBehaviour
 
     void Update()
     {
+        if (GameOver.IsGameOver && dragging_me)
+        {
+            OnMouseUp();
+        }
+
         if (dragging_me)
         {
             Strech();
@@ -111,6 +116,7 @@ public class VeinDrawable : MonoBehaviour
             Vector3 intermediate_point = Vector3.Lerp(initial_position, final_position, i);
             if (Physics2D.OverlapPoint(intermediate_point) == null)
             {
+                Debug.Log("Drawn vein is outside body");
                 return false;
             }
         }

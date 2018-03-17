@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
 {
     int score = 0;
 
-    float bounce_speed = 0.002f;
+    float bounce_speed = 0.05f;
 
     bool stretch = false;
     float max_stretch = 1.3f;
