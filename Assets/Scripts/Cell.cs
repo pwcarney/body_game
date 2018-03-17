@@ -11,9 +11,13 @@ public class Cell : MonoBehaviour
     float health_decay_time = 0.25f;
     float last_decay_time = 0f;
 
+    Score score_controller;
+
     void Start()
     {
         ChangeColor();
+
+        score_controller = FindObjectOfType<Score>();
     }
 
     void FixedUpdate()
@@ -40,6 +44,11 @@ public class Cell : MonoBehaviour
     public void ReceiveBlood()
     {
         health = 1;
+
+        score_controller.Add();
+
+        GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+        GetComponent<AudioSource>().Play();
     }
 
     void OnTriggerEnter2D(Collider2D collision)

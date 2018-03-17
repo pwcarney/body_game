@@ -7,7 +7,17 @@ public class CellSpawner : MonoBehaviour
     float spawn_rate = 5f;
     float last_spawn = 0f;
 
+    int total_cells;
+
     GameObject cell_prefab;
+
+    public int TotalCells
+    {
+        get
+        {
+            return total_cells;
+        }
+    }    
 
 	void Start ()
     {
@@ -45,5 +55,6 @@ public class CellSpawner : MonoBehaviour
         }
 
         Instantiate(cell_prefab, spawn_position, Quaternion.identity);
+        total_cells++;
     }
 }

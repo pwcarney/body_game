@@ -51,12 +51,15 @@ public class Blood : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, current_destination.transform.position) < 0.1f)
+        if (!GameOver.IsGameOver)
         {
-            current_destination = next_destination;
-        }
+            if (Vector3.Distance(transform.position, current_destination.transform.position) < 0.1f)
+            {
+                current_destination = next_destination;
+            }
 
-        transform.position = Vector3.MoveTowards(transform.position, current_destination.transform.position, blood_speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, current_destination.transform.position, blood_speed * Time.deltaTime);
+        }
     }
 
     public bool CanOxygenate(GameObject requester)

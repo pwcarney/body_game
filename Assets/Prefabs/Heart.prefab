@@ -58,9 +58,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.16306168, y: -0.38}
+  m_Offset: {x: -0.16306168, y: -0.08}
   serializedVersion: 2
-  m_Radius: 1.04
+  m_Radius: 1.59
 --- !u!114 &114035511369859296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 234e6850cb5dcbc4bbc7e9fa190e2f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connections: []
 --- !u!114 &114096962444003674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +150,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 63883f8c767427842aa837aee65afe9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

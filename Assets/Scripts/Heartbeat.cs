@@ -17,7 +17,7 @@ public class Heartbeat : MonoBehaviour
         if (GameOver.IsGameOver)
         {
             GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.black, color_change);
-            color_change += 0.05f;
+            color_change += 0.01f;
             return;
         }
 
