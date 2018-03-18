@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 177264511}
   - component: {fileID: 177264510}
   - component: {fileID: 177264512}
+  - component: {fileID: 177264513}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -199,6 +200,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79268acf9a7ff9349a189471526d93d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &177264513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 177264508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.491}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &690562315
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,13 +377,14 @@ GameObject:
   - component: {fileID: 959212741}
   - component: {fileID: 959212740}
   - component: {fileID: 959212742}
+  - component: {fileID: 959212743}
   m_Layer: 5
   m_Name: Atrophy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &959212739
 RectTransform:
   m_ObjectHideFlags: 0
@@ -437,6 +453,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758ca3534791bd548abee3332f4dd559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &959212743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959212738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.491}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1400457796
 GameObject:
   m_ObjectHideFlags: 0
