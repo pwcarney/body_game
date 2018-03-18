@@ -37,7 +37,7 @@ public class CellSpawner : MonoBehaviour
     {
         Vector3 spawn_position = new Vector3();
         int spawn_tries = 0;
-        while (spawn_tries < 5)
+        while (spawn_tries < 10)
         {
             GameObject body_part = transform.parent.GetChild(Random.Range(1, 8)).gameObject;
 
@@ -51,8 +51,18 @@ public class CellSpawner : MonoBehaviour
             Collider2D[] test_location_colliders = Physics2D.OverlapCircleAll(spawn_position, 0.1f);
             if (test_location_colliders.Length == 1)
             {
+                if (total_cells < 5)
+                {
+                    if (Vector3.Distance(spawn_position, FindObjectOfType<Oxygenator>().transform.position) > 3)
+                    {
+                        Debug.Log("Respawning early cell");
+                        continue;
+                    }
+                }
+
                 total_cells++;
-                Instantiate(cell_prefab, spawn_position, Quaternion.identity);
+                GameObject new_cell = Instantiate(cell_prefab, spawn_position, Quaternion.identity);
+                new_cell.name = "Cell " + total_cells.ToString();
                 break;
             }
             else

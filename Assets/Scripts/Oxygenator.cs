@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Oxygenator : MonoBehaviour
 {
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Blood>() != null)
         {
@@ -12,8 +12,6 @@ public class Oxygenator : MonoBehaviour
             {
                 collision.gameObject.GetComponent<Blood>().Oxygenation = collision.gameObject.GetComponent<Blood>().MaxOxygenation;
             }
-
-            collision.gameObject.GetComponent<Blood>().FindNextLocation(gameObject);
         }
     }
 }

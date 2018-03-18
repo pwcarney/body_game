@@ -47,7 +47,7 @@ public class Cell : MonoBehaviour
 
         score_controller.Add();
 
-        GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+        GetComponent<AudioSource>().pitch = Random.Range(0.7f, 1.3f);
         GetComponent<AudioSource>().Play();
     }
 
@@ -58,7 +58,6 @@ public class Cell : MonoBehaviour
             if (collision.gameObject.GetComponent<Blood>().Oxygenation > 0 && collision.gameObject.GetComponent<Blood>().CanOxygenate(gameObject))
             {
                 ReceiveBlood();
-                collision.gameObject.GetComponent<Blood>().FindNextLocation(gameObject);
             }
         }
     }

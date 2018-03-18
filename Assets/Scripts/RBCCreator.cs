@@ -29,7 +29,7 @@ public class RBCCreator : MonoBehaviour
             last_creation = Time.timeSinceLevelLoad;
 
             GameObject new_rbc = Instantiate(rbc_prefab, transform.position, Quaternion.identity);
-            new_rbc.GetComponent<Blood>().FindNextLocation(gameObject);
+            new_rbc.GetComponent<Blood>().SetBirthLocation(gameObject);
         }
 	}
 }
